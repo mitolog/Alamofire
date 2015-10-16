@@ -256,8 +256,10 @@ public class MultipartFormData {
 
         var isReachable = true
 
-        if #available(OSX 10.10, *) {
+        if #available(iOS 8.0, *) {
             isReachable = fileURL.checkPromisedItemIsReachableAndReturnError(nil)
+        } else {
+            // Fallback on earlier versions
         }
 
         guard isReachable else {
